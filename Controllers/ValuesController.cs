@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Chopstick.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Chopstick.Controllers
@@ -10,11 +11,15 @@ namespace Chopstick.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+      private readonly NorthWndContext dbContext;
+      public ValuesController(NorthWndContext dbContext){
+        this.dbContext = dbContext;
+      }
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<List<Categories>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return dbContext.Categories.ToList();
         }
 
         // GET api/values/5
