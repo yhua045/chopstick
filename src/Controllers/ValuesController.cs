@@ -26,7 +26,7 @@ namespace Chopstick.Controllers
         [HttpGet("{id}")]
         public ActionResult<string> Get(int id)
         {
-            return "value";
+            return "value 2";
         }
 
         // POST api/values
